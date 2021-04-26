@@ -1,9 +1,14 @@
-<h3>以下のコメントで、送信する。</h3>
-<%= form_with(model: @picture, local: true) do |form| %>
+<h3>確認画面</h3>
+<%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+  <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
   <%= form.hidden_field :image %>
   <%= form.hidden_field :content %>
   <p>イメージ:<%= @picture.image %></p>
   <p>テキスト:<%= @picture.content %></p>
   <%= form.submit  "登録する" %>
+<% end %>
+<%= form_with(model: @picture, url: new_picture_path, local:true, method:"get") do |form| %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.hidden_field :content %>
   <%= form.submit "戻る", name: 'back' %>
 <% end %>
