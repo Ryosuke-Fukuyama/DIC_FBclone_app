@@ -1,17 +1,17 @@
-<h1>ブログ一覧</h1>
+<h1>投稿一覧</h1>
 <p><%= notice %></p>
 <table>
   <tr>
-    <th>タイトル</th>
-    <th>内容</th>
+    <th>イメージ</th>
+    <th>コメント</th>
   <tr/>
 <% @pictures.each do |picture| %>
   <tr>
-    <td><%= picture.title %></td>
+    <td><%= picture.image %></td>
     <td><%= picture.content %></td>
     <td><%= link_to '詳細を確認', picture_path(picture.id) %></td>
-    <td><%= link_to "ブログを編集", edit_picture_path(picture.id) %></td>
-    <td><%= link_to 'ブログを削除', picture_path(picture.id),
+    <td><%= link_to "投稿を編集", edit_picture_path(picture.id) %></td>
+    <td><%= link_to '投稿を削除', picture_path(picture.id),
       method: :delete,
       data: { confirm: '削除しますか？' } %>
     </td>
@@ -19,5 +19,5 @@
 <% end %>
 </table>
 <br>
-<%= link_to 'ブログ新規投稿', new_picture_path %>
+<%= link_to '投稿新規投稿', new_picture_path %>
 

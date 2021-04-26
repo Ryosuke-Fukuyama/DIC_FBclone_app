@@ -2,8 +2,6 @@ class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
   def index
     @pictures = Picture.all
-    # binding.pry  ターミナルでデバッグ
-    # raise        プラウザでデバッグ
   end
   def new
     @picture = Picture.new
@@ -19,7 +17,7 @@ class PicturesController < ApplicationController
       render :new
     else
       if @picture.save
-        redirect_to pictures_path, notice: "ブログを作成しました！"
+        redirect_to pictures_path, notice: "投稿を作成しました！"
       else
         render :new
       end
@@ -31,18 +29,18 @@ class PicturesController < ApplicationController
   end
   def update
     if @picture.update(picture_params)
-      redirect_to pictures_path, notice: "ブログを編集しました！"
+      redirect_to pictures_path, notice: "投稿を編集しました！"
     else
       render :edit
     end
   end
   def destroy
     @picture.destroy
-    redirect_to pictures_path, notice:"ブログを削除しました！"
+    redirect_to pictures_path, notice:"投稿を削除しました！"
   end
   private
   def picture_params
-    params.require(:picture).permit(:title, :content)
+    params.require(:picture).permit(:image, :image_cache, :content)
   end
   def set_picture
     @picture = Picture.find(params[:id])

@@ -1,10 +1,11 @@
-<h1>ブログ詳細画面</h1>
-<p>タイトル: <%= @picture.title %></p>
-<p>内容: <%= @picture.content %></p>
-<tr>
-
-<%= link_to 'ブログ一覧', pictures_path %>
-
-<%= link_to 'ブログを削除', picture_path(@picture.id),
-      method: :delete,
-      data: { confirm: '削除しますか？' } %>
+<h1>投稿詳細画面</h1>
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @picture.image.url %>
+</p>
+<p>コメント: <%= @picture.content %></p>
+<%= link_to '投稿を編集', edit_picture_path(@picture) %> |
+<%= link_to '投稿を削除', picture_path(@picture.id),
+      method: :delete, data: { confirm: '削除しますか？' } %> |
+<%= link_to '一覧に戻る', pictures_path %>
