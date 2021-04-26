@@ -9,6 +9,15 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <header>
+      <% if logged_in? %>
+        <%= link_to "プロフィール", user_path(current_user.id) %>
+        <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
+      <% else %>
+        <%= link_to "アカウント作成", new_user_path %>
+        <%= link_to "ログイン", new_session_path %>
+      <% end %>
+    </header>
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
@@ -20,5 +29,6 @@
       <%= link_to "ログイン", new_session_path %>
     <% end %>
     <%= yield %>
+    <footer></footer>
   </body>
 </html>
