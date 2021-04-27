@@ -14,11 +14,12 @@
  *= require_self
  */
 header, footer {
+  font-size: 45px;
   color: white;
   background-color: #3B5998;
   height: 50px;
 }
 
 p header {
-  font-size: 45px;
+  color: white;
 }
