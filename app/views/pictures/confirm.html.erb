@@ -1,10 +1,6 @@
 <h3>確認画面</h3>
 <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
   <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
-<<<<<<< HEAD
-=======
-  <%= form.hidden_field :image %>
->>>>>>> origin/main
   <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :content %>
   <p>イメージ:<%= @picture.image %></p>
