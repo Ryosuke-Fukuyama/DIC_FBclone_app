@@ -9,20 +9,24 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <header>
-      <p><nobr>&nbsp;f</nobr></p>
-      <% if logged_in? %>
-        <%= link_to "プロフィール", user_path(current_user.id) %>
-        <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
-      <% else %>
-        <%= link_to "アカウント作成", new_user_path %>
-        <%= link_to "ログイン", new_session_path %>
-      <% end %>
+    <header class="header clearfix">
+      <nav>
+        <ul class="top_menu clearfix">
+          <% if logged_in? %>
+            <li><i>&nbsp;f</i></li>
+            <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
+            <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+          <% else %>
+            <li><%= link_to "アカウント作成", new_user_path %></li>
+            <li><%= link_to "ログイン", new_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
     </header>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <%= yield %>
-    <footer></footer>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <%= yield %>
+      <footer></footer>
   </body>
 </html>
