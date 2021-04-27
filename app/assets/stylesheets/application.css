@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+header, footer {
+  color: white;
+  background-color: #3B5998;
+  height: 50px;
+}
+
+p header {
+  font-size: 45px;
+}
