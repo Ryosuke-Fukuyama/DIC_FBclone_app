@@ -1,13 +1,15 @@
-<h1><%= @picture.user.name %>の投稿一覧</h1>
+<h1><%= current_user.name %>の投稿一覧</h1>
 <p><%= notice %></p>
 <table>
   <tr>
+    <th>投稿者</th>
     <th>イメージ</th>
     <th>コメント</th>
   <tr/>
 <% @pictures.each do |picture| %>
   <tr>
-    <td><%= picture.image %></td>
+    <td><%= picture.user.name %></td>
+    <td><%= image_tag picture.image.url, size: '100x100' %></td>
     <td><%= picture.content %></td>
     <td><%= link_to '詳細を確認', picture_path(picture.id) %></td>
     <td><%= link_to "投稿を編集", edit_picture_path(picture.id) %></td>
